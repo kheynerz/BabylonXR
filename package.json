@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "@babylonjs/core": "5.42.2",
     "@popperjs/core": "2.11.6",
     "@types/react": "18.0.26",
-    "babylonjs": "^5.42.2",
+    "babylonjs": "4.2.2",
+    "babylonjs-loaders": "4.2.2",
     "react": "18.2.0",
     "react-bootstrap": "2.7.0",
     "react-dom": "18.2.0"

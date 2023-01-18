@@ -2,6 +2,8 @@ import React from 'react';
 import { FreeCamera, Vector3, HemisphericLight, MeshBuilder } from 'babylonjs';
 import SceneComponent from './SceneComponent'; // uses above component in same directory
 
+import 'babylonjs-loaders';
+
 let box;
 
 const onSceneReady = async (scene) => {
@@ -29,6 +31,11 @@ const onSceneReady = async (scene) => {
 
   // Our built-in 'ground' shape.
   MeshBuilder.CreateGround('ground', { width: 6, height: 6 }, scene);
+
+  SceneLoader.Append('./', 'scene.gltf', scene, (mesh) => {
+    console.log(mesh);
+    // do something with the scene
+  });
 
   const xr = await scene.createDefaultXRExperienceAsync({
     floorMeshes: [env.ground],
