@@ -3,26 +3,34 @@ import './style.css';
 
 import RoomCard from './RoomCard';
 
-import Room from './Room';
+import LivingRoom from './LivingRoom';
 import Kitchen from './Kitchen';
 import Bathroom from './Bathroom';
+import Room from './Room';
+import Auditorium from './Auditorium';
 
 export default function App() {
   const [currentRoom, setcurrentRoom] = useState('');
 
   const home = [
     {
-      name: 'Room',
-      description: '3D modeling of a Room',
+      name: 'Living Room',
+      description: '3D modeling of a Living Room',
     },
     { name: 'Kitchen', description: '3D modeling of a Kitchen' },
+    { name: 'Bathroom', description: '3D modeling of a Bathroom' },
+
+    { name: 'Room', description: '3D modeling of a Room' },
+    { name: 'Auditorium', description: '3D modeling of a Auditorium' },
     { name: 'Bathroom', description: '3D modeling of a Bathroom' },
   ];
 
   const rooms = {
-    Room: <Room />,
+    'Living Room': <LivingRoom />,
     Kitchen: <Kitchen />,
     Bathroom: <Bathroom />,
+    Room: <Room />,
+    Auditorium: <Auditorium />,
   };
 
   const handleClick = (name) => {
@@ -35,8 +43,9 @@ export default function App() {
 
   return (
     <>
-      <h1>Norkus</h1>
-      <div className="home">
+      <h1>Web House Tour With Babylon JS</h1>
+      <hr />
+      <div className="home container">
         {home.map(({ name, description }, index) => (
           <RoomCard
             key={index}
@@ -46,6 +55,14 @@ export default function App() {
           />
         ))}
       </div>
+
+      <footer className="footer">
+        <h4>Web Tour Creators</h4>
+        <hr />
+        <p>Ronald Arce Matarmoros - 2020072053</p>
+        <p>Sebastián Castro Román - 2020037165</p>
+        <p>Mayckel Porras Rojas - 2020148949</p>
+      </footer>
     </>
   );
 }

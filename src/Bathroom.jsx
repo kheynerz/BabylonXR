@@ -1,38 +1,9 @@
 import React from 'react';
-import {
-  FreeCamera,
-  Vector3,
-  HemisphericLight,
-  MeshBuilder,
-  SceneLoader,
-} from 'babylonjs';
+import { FreeCamera, Vector3, HemisphericLight, SceneLoader } from 'babylonjs';
 import SceneComponent from './SceneComponent'; // uses above component in same directory
 import 'babylonjs-loaders';
 
-const xrPolyfillPromise = new Promise((resolve) => {
-  if (navigator.xr) {
-    return resolve();
-  }
-  if (window.WebXRPolyfill) {
-    new WebXRPolyfill();
-    return resolve();
-  } else {
-    const url =
-      'https://cdn.jsdelivr.net/npm/webxr-polyfill@latest/build/webxr-polyfill.js';
-    const s = document.createElement('script');
-    s.src = url;
-    document.head.appendChild(s);
-    s.onload = () => {
-      new WebXRPolyfill();
-      resolve();
-    };
-  }
-});
-
 const onSceneReady = async (scene) => {
-  await xrPolyfillPromise;
-  console.log(navigator.xr); // should be there!
-
   const camera = new FreeCamera('camera1', new Vector3(0, 70, 25), scene);
 
   camera.setTarget(new BABYLON.Vector3(0, 50, 0));

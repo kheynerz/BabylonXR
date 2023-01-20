@@ -5,9 +5,10 @@ import 'babylonjs-loaders';
 
 const onSceneReady = (scene) => {
   // This creates and positions a free camera (non-mesh)
-  const camera = new FreeCamera('camera1', new Vector3(0.5, 1.5, 1), scene);
+  const camera = new FreeCamera('camera1', new Vector3(0, 4, 2), scene);
+
   // This targets the camera to scene origin
-  camera.setTarget(new Vector3(0.2, 1, 0));
+  camera.setTarget(new Vector3(0, 0, 180));
 
   scene.clearColor = new BABYLON.Color3(255, 255, 255);
   const canvas = scene.getEngine().getRenderingCanvas();
@@ -22,7 +23,7 @@ const onSceneReady = (scene) => {
   light.intensity = 0.7;
 
   BABYLON.SceneLoader.Append(
-    'https://cdn.jsdelivr.net/gh/kheynerz/WebVR@main/assets/red_room.glb',
+    'https://cdn.jsdelivr.net/gh/kheynerz/WebVR@main/assets/auditorium.glb',
     '',
     scene,
     () => {}
@@ -31,7 +32,7 @@ const onSceneReady = (scene) => {
   scene.createDefaultVRExperience();
 };
 
-const Room = () => {
+const Auditorium = () => {
   return (
     <SceneComponent
       antialias
@@ -42,4 +43,4 @@ const Room = () => {
   );
 };
 
-export default Room;
+export default Auditorium;

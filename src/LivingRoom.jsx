@@ -5,11 +5,11 @@ import 'babylonjs-loaders';
 
 const onSceneReady = (scene) => {
   // This creates and positions a free camera (non-mesh)
-  const camera = new FreeCamera('camera1', new Vector3(0.5, 1.5, 1), scene);
-  // This targets the camera to scene origin
-  camera.setTarget(new Vector3(0.2, 1, 0));
+  const camera = new FreeCamera('camera1', new Vector3(1, 0.5, 0), scene);
 
-  scene.clearColor = new BABYLON.Color3(255, 255, 255);
+  // This targets the camera to scene origin
+  camera.setTarget(Vector3.Zero());
+
   const canvas = scene.getEngine().getRenderingCanvas();
 
   // This attaches the camera to the canvas
@@ -21,25 +21,30 @@ const onSceneReady = (scene) => {
   // Default intensity is 1. Let's dim the light a small amount
   light.intensity = 0.7;
 
+  // Our built-in 'box' shape.
+  // box = MeshBuilder.CreateBox('box', { size: 2 }, scene);
+
   BABYLON.SceneLoader.Append(
-    'https://cdn.jsdelivr.net/gh/kheynerz/WebVR@main/assets/red_room.glb',
+    'https://cdn.jsdelivr.net/gh/kheynerz/WebVR@main/assets/livinroom.glb',
     '',
     scene,
-    () => {}
+    (newScene) => {}
   );
 
   scene.createDefaultVRExperience();
 };
 
-const Room = () => {
+const onRender = (scene) => {};
+
+const LivingRoom = () => {
   return (
     <SceneComponent
       antialias
       onSceneReady={onSceneReady}
-      onRender={() => {}}
+      onRender={onRender}
       id="renderCanvas"
     />
   );
 };
 
-export default Room;
+export default LivingRoom;
