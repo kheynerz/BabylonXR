@@ -57,7 +57,8 @@ const onSceneReady = async (scene) => {
       });
     }
   );
-  var xr = scene.createDefaultXRExperience();
+
+  scene.createDefaultVRExperience();
 };
 
 const onRender = (scene) => {};
