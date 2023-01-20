@@ -8,6 +8,7 @@ import Kitchen from './Kitchen';
 import Bathroom from './Bathroom';
 import Room from './Room';
 import Auditorium from './Auditorium';
+import DiningRoom from './DiningRoom';
 
 export default function App() {
   const [currentRoom, setcurrentRoom] = useState('');
@@ -22,7 +23,7 @@ export default function App() {
 
     { name: 'Room', description: '3D modeling of a Room' },
     { name: 'Auditorium', description: '3D modeling of a Auditorium' },
-    { name: 'Bathroom', description: '3D modeling of a Bathroom' },
+    { name: 'Dining Room', description: '3D modeling of a Dining Room' },
   ];
 
   const goBack = () => {
@@ -35,6 +36,7 @@ export default function App() {
     Bathroom: <Bathroom goBack={goBack} />,
     Room: <Room goBack={goBack} />,
     Auditorium: <Auditorium goBack={goBack} />,
+    'Dining Room': <DiningRoom goBack={goBack} />,
   };
 
   const handleClick = (name) => {
