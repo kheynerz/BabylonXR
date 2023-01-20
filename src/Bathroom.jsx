@@ -33,9 +33,9 @@ const onSceneReady = async (scene) => {
   await xrPolyfillPromise;
   console.log(navigator.xr); // should be there!
 
-  const camera = new FreeCamera('camera1', new Vector3(0, 50, 35), scene);
+  const camera = new FreeCamera('camera1', new Vector3(0, 70, 25), scene);
 
-  camera.setTarget(new BABYLON.Vector3(0, 35, 0));
+  camera.setTarget(new BABYLON.Vector3(0, 50, 0));
   scene.clearColor = new BABYLON.Color3(0, 0, 0);
 
   const canvas = scene.getEngine().getRenderingCanvas();
