@@ -25,12 +25,16 @@ export default function App() {
     { name: 'Bathroom', description: '3D modeling of a Bathroom' },
   ];
 
+  const goBack = () => {
+    setcurrentRoom('');
+  };
+
   const rooms = {
-    'Living Room': <LivingRoom />,
-    Kitchen: <Kitchen />,
-    Bathroom: <Bathroom />,
-    Room: <Room />,
-    Auditorium: <Auditorium />,
+    'Living Room': <LivingRoom goBack={goBack} />,
+    Kitchen: <Kitchen goBack={goBack} />,
+    Bathroom: <Bathroom goBack={goBack} />,
+    Room: <Room goBack={goBack} />,
+    Auditorium: <Auditorium goBack={goBack} />,
   };
 
   const handleClick = (name) => {

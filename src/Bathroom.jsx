@@ -2,7 +2,7 @@ import React from 'react';
 import { FreeCamera, Vector3, HemisphericLight, SceneLoader } from 'babylonjs';
 import SceneComponent from './SceneComponent'; // uses above component in same directory
 import 'babylonjs-loaders';
-
+import { Button } from 'react-bootstrap';
 const onSceneReady = async (scene) => {
   const camera = new FreeCamera('camera1', new Vector3(0, 70, 25), scene);
 
@@ -32,16 +32,20 @@ const onSceneReady = async (scene) => {
   scene.createDefaultVRExperience();
 };
 
-const onRender = (scene) => {};
-
-const Bathroom = () => {
+const Bathroom = ({ goBack }) => {
   return (
-    <SceneComponent
-      antialias
-      onSceneReady={onSceneReady}
-      onRender={onRender}
-      id="renderCanvas"
-    />
+    <>
+      <Button className="volver" variant="secondary" onClick={() => goBack()}>
+        Go Back
+      </Button>
+
+      <SceneComponent
+        antialias
+        onSceneReady={onSceneReady}
+        onRender={() => {}}
+        id="renderCanvas"
+      />
+    </>
   );
 };
 
