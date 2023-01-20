@@ -4,9 +4,9 @@ import SceneComponent from './SceneComponent'; // uses above component in same d
 import 'babylonjs-loaders';
 import { Button } from 'react-bootstrap';
 const onSceneReady = async (scene) => {
-  const camera = new FreeCamera('camera1', new Vector3(0, 70, 25), scene);
+  const camera = new FreeCamera('camera1', new Vector3(1.5, 1.5, 1.5), scene);
 
-  camera.setTarget(new BABYLON.Vector3(0, 50, 0));
+  camera.setTarget(new BABYLON.Vector3(0, 0, 0));
   scene.clearColor = new BABYLON.Color3(0, 0, 0);
 
   const canvas = scene.getEngine().getRenderingCanvas();
@@ -19,14 +19,10 @@ const onSceneReady = async (scene) => {
   light.intensity = 0.7;
 
   SceneLoader.Append(
-    'https://cdn.jsdelivr.net/gh/kheynerz/WebVR@main/assets/bathroom.glb',
+    'https://cdn.jsdelivr.net/gh/kheynerz/WebVR@main/assets/simple_bathroom_baking.glb',
     '',
     scene,
-    (newScene) => {
-      newScene.meshes.map((mesh) => {
-        mesh.scaling = new BABYLON.Vector3(5, 5, 5);
-      });
-    }
+    (newScene) => {}
   );
 
   scene.createDefaultVRExperience();
