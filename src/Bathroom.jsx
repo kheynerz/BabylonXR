@@ -57,7 +57,7 @@ const onSceneReady = async (scene) => {
       });
     }
   );
-  var xr = cene.createDefaultXRExperience();
+  var xr = scene.createDefaultXRExperience();
 };
 
 const onRender = (scene) => {};
