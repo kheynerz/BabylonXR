@@ -32,12 +32,9 @@ const xrPolyfillPromise = new Promise((resolve) => {
 const onSceneReady = async (scene) => {
   await xrPolyfillPromise;
   console.log(navigator.xr); // should be there!
-  console.log(
-    await BABYLON.WebXRSessionManager.IsSessionSupportedAsync('immersive-vr')
-  );
+
   const camera = new FreeCamera('camera1', new Vector3(0, 50, 35), scene);
 
-  console.log(camera);
   camera.setTarget(new BABYLON.Vector3(0, 35, 0));
   scene.clearColor = new BABYLON.Color3(0, 0, 0);
 
@@ -60,7 +57,7 @@ const onSceneReady = async (scene) => {
       });
     }
   );
-  var xr = await scene.createDefaultXRExperienceAsync();
+  var xr = cene.createDefaultXRExperience();
 };
 
 const onRender = (scene) => {};
