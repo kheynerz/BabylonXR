@@ -5,7 +5,7 @@ import 'babylonjs-loaders';
 import { Button } from 'react-bootstrap';
 const onSceneReady = (scene) => {
   // This creates and positions a free camera (non-mesh)
-  const camera = new FreeCamera('camera1', new Vector3(4, 3, 5), scene);
+  const camera = new FreeCamera('camera1', new Vector3(0, 1, 2), scene);
 
   // This targets the camera to scene origin
   camera.setTarget(Vector3.Zero());
