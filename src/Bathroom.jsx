@@ -9,8 +9,33 @@ import {
 import SceneComponent from './SceneComponent'; // uses above component in same directory
 import 'babylonjs-loaders';
 
-const onSceneReady = (scene) => {
-  const camera = new FreeCamera('camera1', new Vector3(0, 35, 35), scene);
+const xrPolyfillPromise = new Promise((resolve) => {
+  if (navigator.xr) {
+    return resolve();
+  }
+  if (window.WebXRPolyfill) {
+    new WebXRPolyfill();
+    return resolve();
+  } else {
+    const url =
+      'https://cdn.jsdelivr.net/npm/webxr-polyfill@latest/build/webxr-polyfill.js';
+    const s = document.createElement('script');
+    s.src = url;
+    document.head.appendChild(s);
+    s.onload = () => {
+      new WebXRPolyfill();
+      resolve();
+    };
+  }
+});
+
+const onSceneReady = async (scene) => {
+  await xrPolyfillPromise;
+  console.log(navigator.xr); // should be there!
+  console.log(
+    await BABYLON.WebXRSessionManager.IsSessionSupportedAsync('immersive-vr')
+  );
+  const camera = new FreeCamera('camera1', new Vector3(0, 50, 35), scene);
 
   camera.setTarget(new BABYLON.Vector3(0, 35, 0));
   scene.clearColor = new BABYLON.Color3(0, 0, 0);
@@ -34,8 +59,7 @@ const onSceneReady = (scene) => {
       });
     }
   );
-
-  scene.createDefaultVRExperience();
+  var xr = await scene.createDefaultXRExperienceAsync();
 };
 
 const onRender = (scene) => {};
