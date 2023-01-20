@@ -37,6 +37,7 @@ const onSceneReady = async (scene) => {
   );
   const camera = new FreeCamera('camera1', new Vector3(0, 50, 35), scene);
 
+  console.log(camera);
   camera.setTarget(new BABYLON.Vector3(0, 35, 0));
   scene.clearColor = new BABYLON.Color3(0, 0, 0);
 
