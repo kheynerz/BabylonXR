@@ -1,3 +1,1 @@
-# BabylonXR
-
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/webvr)
+# Web VR project
